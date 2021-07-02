@@ -60,11 +60,27 @@ odrv_YZ.config.brake_resistance = 0.4690000116825104
 odrv_X.config.brake_resistance = 0.4690000116825104
 
 # Individual setup
+# Z SETUP
 odrv_YZ.axis0.motor.config.resistance_calib_max_voltage = 5.0
+odrv_YZ.axis0.controller.config.pos_gain = 20.0
+odrv_YZ.axis0.controller.config.vel_gain = 0.16
+odrv_YZ.axis0.controller.config.vel_integrator_gain = 0.32
+
+# Y SETUP
 odrv_YZ.axis1.motor.config.resistance_calib_max_voltage = 2.0
+odrv_YZ.axis1.controller.config.pos_gain = 20.0
+odrv_YZ.axis1.controller.config.vel_gain = 0.16
+odrv_YZ.axis1.controller.config.vel_integrator_gain = 0.32
 
+# X SETUP
 odrv_X.axis0.motor.config.resistance_calib_max_voltage = 2.0
+odrv_X.axis0.controller.config.pos_gain = 40.0
+odrv_X.axis0.controller.config.vel_gain = 0.35
+odrv_X.axis0.controller.config.vel_integrator_gain = 0.32
 
+
+
+user_input = input("Complete calibration? (yN)")
 
 # Repeated setup for both axises
 for axis in [odrv_YZ.axis0, odrv_YZ.axis1, odrv_X.axis0]:
@@ -80,6 +96,8 @@ for axis in [odrv_YZ.axis0, odrv_YZ.axis1, odrv_X.axis0]:
     axis.controller.config.vel_limit_tolerance = 1.2000000476837158
     axis.motor.config.pole_pairs = 20
     axis.motor.config.current_lim = 40.0
+
+    
     
 
     axis.config.startup_closed_loop_control = True
@@ -91,8 +109,6 @@ for axis in [odrv_YZ.axis0, odrv_YZ.axis1, odrv_X.axis0]:
     check_errors(axis)
 
     # Start Index Incoder calibration
-    # user_input = input("Complete calibration? (yN)")
-    user_input = "y"
     if user_input.lower() == "y" or user_input.lower() == "yes":
         print("Running calibration")
         axis.encoder.config.use_index = True

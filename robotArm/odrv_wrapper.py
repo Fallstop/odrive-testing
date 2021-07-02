@@ -32,8 +32,8 @@ class Odrive_Arm:
 
         self.axes = {
             "X": self.odrv_X.axis0,
-            "Y": self.odrv_YZ.axis0,
-            "Z": self.odrv_YZ.axis1
+            "Y": self.odrv_YZ.axis1,
+            "Z": self.odrv_YZ.axis0
         }
         print("Odrives are connected, dumping previous errors")
         print("YZ Odrive Errors:")

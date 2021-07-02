@@ -97,6 +97,11 @@ for axis in [odrv_YZ.axis0, odrv_YZ.axis1, odrv_X.axis0]:
     axis.motor.config.pole_pairs = 20
     axis.motor.config.current_lim = 40.0
 
+    axis.trap_traj.config.vel_limit = 0.5
+    axis.trap_traj.config.accel_limit = 0.5
+    axis.trap_traj.config.decel_limit = 0.5
+    # axis.<axis>.controller.config.inertia 
+
     
     
 
